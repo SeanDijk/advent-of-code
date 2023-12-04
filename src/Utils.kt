@@ -21,3 +21,9 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
 fun Any?.println() = println(this)
 
 fun Any?.peek() = this.apply { println(this) }
+
+
+
+data class Coordinate(val x: Int, val y: Int)
+
+fun IntRange.overlapsWith(other: IntRange) = this.last >= other.first && this.first <= other.last
