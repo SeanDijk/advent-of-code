@@ -3,6 +3,8 @@ import java.security.MessageDigest
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 
+const val DEBUG = true
+
 /**
  * Reads lines from the given input txt file.
  */
@@ -27,3 +29,7 @@ fun Any?.peek() = this.apply { println(this) }
 data class Coordinate(val x: Int, val y: Int)
 
 fun IntRange.overlapsWith(other: IntRange) = this.last >= other.first && this.first <= other.last
+
+fun debug(block: () -> Unit) {
+    if (DEBUG) block()
+}
