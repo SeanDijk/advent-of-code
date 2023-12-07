@@ -1,15 +1,22 @@
 import kotlin.math.max
 import kotlin.math.min
 
+/**
+ * Intersects two LongRanges and returns the intersection as a LongRange object.
+ *
+ * @param range The first LongRange.
+ * @param other The second LongRange.
+ * @return The intersection of the two LongRanges.
+ */
 fun intersectRanges(range: LongRange, other: LongRange): LongRange {
-    if (range.start > other.endInclusive) return LongRange.EMPTY
-    if (other.start > range.endInclusive) return LongRange.EMPTY
+    if (range.first > other.last) return LongRange.EMPTY
+    if (other.first > range.last) return LongRange.EMPTY
 
-    return LongRange(max(range.start, other.start), min(range.endInclusive, other.endInclusive))
+    return LongRange(max(range.first, other.first), min(range.last, other.last))
 }
 
 fun rangesIntersect(range: LongRange, other: LongRange) = intersectRanges(range, other) != LongRange.EMPTY
-fun rangesConnect(range: LongRange, other: LongRange) = range.last + 1 == other.first || other.last + 1 == range.first
+fun rangesConnect(range: LongRange, other: LongRange) = range.last + 1 == other.first || other.last + 1 == range.first || rangesIntersect(range, other)
 
 
 fun squashRanges(ranges: List<LongRange>): List<LongRange> {
