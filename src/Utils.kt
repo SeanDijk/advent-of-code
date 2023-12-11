@@ -28,8 +28,12 @@ fun Any?.peek() = this.apply { println(this) }
 
 data class Coordinate(val x: Int, val y: Int)
 
-fun IntRange.overlapsWith(other: IntRange) = this.last >= other.first && this.first <= other.last
 
 fun debug(block: () -> Unit) {
     if (DEBUG) block()
 }
+
+fun Int.isEven() = this % 2 == 0
+fun Int.isOdd() = !isEven()
+fun Long.isEven() = this % 2L == 0L
+fun Long.isOdd() = !isEven()

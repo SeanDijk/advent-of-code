@@ -40,3 +40,6 @@ fun squashRanges(ranges: List<LongRange>): List<LongRange> {
 
     return squashedList
 }
+
+
+fun IntRange.overlapsWith(other: IntRange) = this.last >= other.first && this.first <= other.last
